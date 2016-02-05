@@ -13,7 +13,7 @@ namespace AutoRunFuckery
     {
         static void Main(string[] args)
         {
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
             MessageBox.Show("Something something, it works!", "Caption", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
