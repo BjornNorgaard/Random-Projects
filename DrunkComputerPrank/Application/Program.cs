@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Drawing.Configuration;
 using System.Threading;
 using System.Windows.Forms;
 using System.Media;
-using System.Runtime.InteropServices;
 
 namespace Application
 {
@@ -11,8 +9,8 @@ namespace Application
     {
         #region Declarations
 
-        public static int _startupDelaySeconds = 3;
-        public static int _totalDurationSeconds = 12;
+        public static int _startupDelaySeconds = 60*1;
+        public static int _totalDurationSeconds = 60*2;
 
         public static Random _random = new Random();
 
@@ -28,6 +26,7 @@ namespace Application
 
         static void Main(string[] args)
         {
+            // Will not be printed
             Console.WriteLine("Welcome to Drunk PC Application, by Norgaard\n");
 
             if (args.Length >= 2)
@@ -74,7 +73,7 @@ namespace Application
         {
             Console.WriteLine("Started Thread: Mouse");
 
-            int moveX = 0, moveY = 0, vigor = 10;
+            int moveX = 0, moveY = 0, vigor = 50;
 
             while (true)
             {
@@ -147,7 +146,7 @@ namespace Application
 
             while (true)
             {
-                if (_random.Next(100) > 30)
+                if (_random.Next(100) > 20)
                 {
                     switch (_random.Next(2))
                     {
