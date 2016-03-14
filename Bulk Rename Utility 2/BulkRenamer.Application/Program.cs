@@ -11,13 +11,17 @@ namespace BulkRenamer.Application
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello world!");
-            //System.IO.File.Create(@"C:\Users\Norgaard\Downloads\Hello.txt");
+            string path = @"C:\Users\Norgaard\Downloads";
 
-            //System.IO.File.Move(@"C:\Users\Norgaard\Downloads\Hello.txt", @"C:\Users\Norgaard\Downloads\Derp.txt");
+            Console.WriteLine("Reneming all files in:\n" + path);
 
-            
-            Console.WriteLine("" + Directory.GetCurrentDirectory());
+            string[] files = System.IO.Directory.GetFiles(path);
+
+            Console.WriteLine("\nThe files are currently named:");
+            foreach (string file in files)
+            {
+                Console.WriteLine(file);
+            }
         }
     }
 }
