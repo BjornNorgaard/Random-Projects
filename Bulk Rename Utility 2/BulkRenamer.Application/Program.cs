@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Bulk_Rename_Utility_2;
 
 namespace BulkRenamer.Application
 {
@@ -13,15 +10,26 @@ namespace BulkRenamer.Application
         {
             string path = @"C:\Users\Norgaard\Downloads";
 
-            Console.WriteLine("Reneming all files in:\n" + path);
+            Console.WriteLine("Renaming all files in:\n" + path);
 
             string[] files = System.IO.Directory.GetFiles(path);
 
             Console.WriteLine("\nThe files are currently named:");
+            for (int i = 0; i < files.Length; i++)
+            {
+                files[i] = Path.GetFileName(files[i]);
+            }
+
             foreach (string file in files)
             {
-                Console.WriteLine(file);
+                Console.WriteLine("\t" + file);
             }
+
+            // do renaming bit...
+
+            Brutto brutto = new Brutto();
+            brutto.RenameAllFilesInFolder(path);
+            
         }
     }
 }
