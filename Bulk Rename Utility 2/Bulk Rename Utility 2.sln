@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bulk Rename Utility 2", "Bu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkRenamer.Application", "BulkRenamer.Application\BulkRenamer.Application.csproj", "{BA902F86-520B-471A-8F6B-8D30403228BD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkRenamer.Interface", "BulkRenamer.Interface\BulkRenamer.Interface.csproj", "{A2D8FABA-C177-4028-97D4-07AEAAFE7EDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BA902F86-520B-471A-8F6B-8D30403228BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA902F86-520B-471A-8F6B-8D30403228BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA902F86-520B-471A-8F6B-8D30403228BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2D8FABA-C177-4028-97D4-07AEAAFE7EDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2D8FABA-C177-4028-97D4-07AEAAFE7EDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2D8FABA-C177-4028-97D4-07AEAAFE7EDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2D8FABA-C177-4028-97D4-07AEAAFE7EDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -29,10 +29,10 @@ namespace BulkRenamer.Application
 
             Brutto brutto = new Brutto();
             brutto.Folder = path;
-            brutto.NewName = "Hello";
+            brutto.NewNameForFile = "oij";
+            brutto.StringContainedInTarget = "Copy";
 
-            brutto.RenameAllFilesInFolder();
-
+            brutto.Rename();
         }
     }
 }
