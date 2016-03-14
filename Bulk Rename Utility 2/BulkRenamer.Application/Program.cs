@@ -28,8 +28,11 @@ namespace BulkRenamer.Application
             // do renaming bit...
 
             Brutto brutto = new Brutto();
-            brutto.RenameAllFilesInFolder(path);
-            
+            brutto.Folder = path;
+            brutto.NewName = "Hello";
+
+            brutto.RenameAllFilesInFolder();
+
         }
     }
 }

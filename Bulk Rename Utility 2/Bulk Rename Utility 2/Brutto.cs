@@ -11,11 +11,11 @@ namespace Bulk_Rename_Utility_2
     {
         #region Properties
 
-        private string[] _files = {"empty"};
+        private string[] _files = { "empty" };
         private string _folder = "empty";
         private string _newName = "empty";
 
-        private string Folder
+        public string Folder
         {
             get { return _folder; }
             set { _folder = value; }
@@ -26,22 +26,22 @@ namespace Bulk_Rename_Utility_2
             get { return _files; }
             set { _files = value; }
         }
-        
+
         public string NewName
         {
             get { return _newName; }
             set { _newName = value; }
         }
-        
+
         #endregion
 
         #region Methods
 
-        public void RenameFile(string oldFilename, string newFilename)
+        private void RenameFile(string oldFilename, string newFilename)
         {
             File.Move(oldFilename, newFilename);
         }
-        
+
         public void RenameAllFilesInFolder()
         {
             // Load filenames into stringarray
