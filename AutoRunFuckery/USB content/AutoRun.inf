@@ -1,0 +1,5 @@
+[autorun]
+icon=./folder/icon.ico
+label=Derp Drive
+open=./folder/script.bat
+action=Show greeting
