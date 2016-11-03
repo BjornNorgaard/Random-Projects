@@ -1,21 +1,18 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
+using static System.Console;
 
 namespace TXT_Bookmarks
 {
-    class Program
+    internal class Program
     {
-        static string[] files = { };
-        static string[] lines = { };
+        private static string[] _filesInDirectory = { };
+        private static string[] _lines = { };
 
         public static void OpenSitesInThisFile(int fileToOpen)
         {
-            lines = System.IO.File.ReadAllLines(files[fileToOpen]);
-
-            //Debug.WriteLine("File contains these sites:");
-
-            foreach (var line in lines)
+            _lines = File.ReadAllLines(_filesInDirectory[fileToOpen]);
+            foreach (var line in _lines)
             {
                 if (line.Contains("http"))
                 {
@@ -27,22 +24,22 @@ namespace TXT_Bookmarks
 
         public static void SplitFileIntoSmallerFiles(int fileToOpen, int numberOfFilesToSplitInto)
         {
-            string[] lines = System.IO.File.ReadAllLines(files[fileToOpen]);
+            var linesInFile = File.ReadAllLines(_filesInDirectory[fileToOpen]);
 
-            int nameNumberForFile = 0;
-            for (int i = 0; i < lines.Length; i++)
+            var nameNumberForFile = 1;
+            for (var i = 0; i < linesInFile.Length; i++)
             {
-                using (StreamWriter sw = new StreamWriter("file" + nameNumberForFile + ".txt"))
+                using (var writer = new StreamWriter("file" + nameNumberForFile + ".txt"))
                 {
-                    for (int j = 0; j < lines.Length / numberOfFilesToSplitInto; j++)
+                    for (var j = 0; j < linesInFile.Length / numberOfFilesToSplitInto; j++)
                     {
-                        sw.Write(lines[i] + "\n");
-                        if (j != lines.Length / numberOfFilesToSplitInto - 1)
+                        writer.Write(linesInFile[i] + "\n");
+                        if (j != linesInFile.Length / numberOfFilesToSplitInto - 1)
                         {
                             i++;
                         }
                     }
-                    sw.Close();
+                    writer.Close();
                     nameNumberForFile++;
                 }
             }
@@ -50,60 +47,49 @@ namespace TXT_Bookmarks
 
         private static void PrintFilesInCurrentFolder()
         {
-            files = System.IO.Directory.GetFiles(Directory.GetCurrentDirectory());
+            _filesInDirectory = Directory.GetFiles(Directory.GetCurrentDirectory());
 
-            for (int i = 0; i < files.Length; i++)
+            for (var i = 0; i < _filesInDirectory.Length; i++)
             {
-                files[i] = Path.GetFileName(files[i]);
+                _filesInDirectory[i] = Path.GetFileName(_filesInDirectory[i]);
             }
 
-            //Console.WriteLine("\n");
-            for (int i = 0; i < files.Length; i++)
+            for (var i = 0; i < _filesInDirectory.Length; i++)
             {
-                string file = files[i];
-                Console.WriteLine("\t" + "(" + i + ") " + file);
+                var file = _filesInDirectory[i];
+                WriteLine("\t" + "(" + i + ") " + file);
             }
         }
 
-        static void Main(string[] args)
+        private static void Main()
         {
-            Console.WriteLine("What do u want to do?" +
+            WriteLine("What do u want to do?" +
                               "\n\t (1) Open all sites in a file." +
-                              "\n\t (2) Spit a file into smaller files.");
-            Console.Write("Choice: ");
+                              "\n\t (2) Split a file into smaller filesInDirectory.");
+            Write("\nChoice: ");
 
-            var choice = Console.ReadLine();
-            Console.Clear();
+            var choice = ReadLine();
+            Clear();
 
             if (choice != null && int.Parse(choice) == 1)
             {
-                Console.WriteLine("You can open one of these files:");
-
+                WriteLine("You can open one of these filesInDirectory:");
                 PrintFilesInCurrentFolder();
-
-                Console.Write("Choice: ");
-                //Console.Write("\nOpen all sites in this file: ");
-                int numberOfFileToOpen = int.Parse(Console.ReadLine());
-
+                Write("\nChoice: ");
+                var numberOfFileToOpen = int.Parse(ReadLine());
                 OpenSitesInThisFile(numberOfFileToOpen);
             }
             else if (choice != null && int.Parse(choice) == 2)
             {
-                Console.WriteLine("You can split one of these files:");
+                WriteLine("You can split one of these filesInDirectory:");
                 PrintFilesInCurrentFolder();
-
-                Console.Write("Choice: ");
-                int file = int.Parse(Console.ReadLine());
-
-                Console.Write("How many file should it be split into: ");
-                Console.Write("\nChoice: ");
-                int numberOfFileToSplitItInto = int.Parse(Console.ReadLine());
-                
+                Write("\nChoice: ");
+                var file = int.Parse(ReadLine());
+                Write("How many file should it be split into: ");
+                Write("\nChoice: ");
+                var numberOfFileToSplitItInto = int.Parse(ReadLine());
                 SplitFileIntoSmallerFiles(file, numberOfFileToSplitItInto);
             }
-
-            //SplitFileIntoSmallerFiles("readthis.txt", 3); // for testing
-
         }
     }
 }
