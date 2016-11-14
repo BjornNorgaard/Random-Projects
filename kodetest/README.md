@@ -1,3 +1,5 @@
+![frontpage_image copy.png](https://bitbucket.org/repo/pqdrRM/images/1938346245-frontpage_image%20copy.png)
+
 This test includeds 8 assignments, which we want you to solve!
 
 Please refrain from using the internet for scouting out solutions.
