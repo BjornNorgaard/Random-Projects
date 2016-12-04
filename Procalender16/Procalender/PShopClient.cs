@@ -1,8 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using Newtonsoft.Json;
 
 namespace Procalender
 {
@@ -14,13 +12,25 @@ namespace Procalender
         {
             // http://jul.proshop.dk/Home/SubmitQuestion?Length=4
             Client.BaseAddress = new Uri("http://jul.proshop.dk/Home/");
+
+            var listOfData = GetData();
+
+            foreach (var formData in listOfData)
+            {
+                var result = UploadAnswer(formData);
+            }
         }
 
-        public bool UploadAnswer()
+        private List<FormData> GetData()
         {
+            var listOfData = new List<FormData>();
+
+            // TODO read data from file...
+
+            // TODO created FormData objects
             var data = new FormData()
             {
-                Address =  "addressone",
+                Address = "addressone",
                 AnswerDay = DateTime.Now,
                 AnswerOnQuestion = "1",
                 City = "cityederp",
@@ -29,20 +39,26 @@ namespace Procalender
                 ZipCode = "8829",
             };
 
-            var settings = new JsonSerializerSettings()
+            // TODO add FormData objects to list
+            listOfData.Add(data);
+
+            return listOfData;
+        }
+
+        private bool UploadAnswer(FormData data)
+        {
+            var formContent = new FormUrlEncodedContent(new[]
             {
-                DateFormatHandling = DateFormatHandling.IsoDateFormat,
-                DateFormatString = "dd-MM-yyyy HH:mm:ss",
-            };
+                new KeyValuePair<string, string>("Email",data.Email),
+                new KeyValuePair<string, string>("Navn",data.Name),
+                new KeyValuePair<string, string>("Address",data.Address),
+                new KeyValuePair<string, string>("ZipCode",data.ZipCode),
+                new KeyValuePair<string, string>("City",data.City),
+            });
 
             try
             {
-                var jsonData = JsonConvert.SerializeObject(data, settings);
-                var buffer = Encoding.UTF8.GetBytes(jsonData);
-                var byteArrayContent = new ByteArrayContent(buffer);
-                byteArrayContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-
-                var responseMessage = Client.PostAsync("SubmitQuestion?Length=4", byteArrayContent);
+                var responseMessage = Client.PostAsync("SubmitQuestion?Length=4", formContent);
                 responseMessage.Wait();
                 var response = responseMessage.Result;
 
