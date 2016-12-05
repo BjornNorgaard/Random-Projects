@@ -19,7 +19,9 @@ namespace Procalender.Application
 
             try
             {
-                TodaysAnswer = int.Parse(args[0]);
+                Console.WriteLine("What is todays answer?");
+                Console.Write("Answer: ");
+                TodaysAnswer = int.Parse(Console.ReadLine());
             }
             catch (Exception)
             {
