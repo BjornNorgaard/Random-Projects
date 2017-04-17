@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UrlOpener.Chrome\UrlOpener.Chrome.csproj" />
+    <ProjectReference Include="..\UrlOpener.Interface\UrlOpener.Interface.csproj" />
+  </ItemGroup>
+
+</Project>
