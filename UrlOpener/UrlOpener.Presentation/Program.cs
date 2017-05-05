@@ -11,7 +11,7 @@ namespace UrlOpener.Presentation
             var lines = File.ReadAllLines("quicklaunchsites.txt");
 
             IUrlOpener opener = new UrlOpenerChrome();
-            opener.OpenAllUrls(lines);
+            opener.OpenAllUrls(lines, true);
         }
     }
 }
